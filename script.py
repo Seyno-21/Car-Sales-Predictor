@@ -55,7 +55,7 @@ print(model.summary())
 
 #Train model
 model.compile(optimizer = 'adam', loss = 'mean_squared_error')
-epochs_hist = model.fit(input_scaled, output_scaled, epochs=10000, batch_size=100, verbose=1, validation_split=0.002)
+epochs_hist = model.fit(input_scaled, output_scaled, epochs=20, batch_size=10, verbose=1, validation_split=0.2)
 print(epochs_hist.history.keys()) #print dictionary keys
 
 #Plot the training graph to see how quickly the model learns
