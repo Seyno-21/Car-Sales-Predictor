@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import PySimpleGUI as sg
 from tensorflow import keras
 
 from sklearn.preprocessing import MinMaxScaler
@@ -17,7 +18,7 @@ print(data)
 
 #Plotting Data
 sns.pairplot(data)
-plt.show(block = True)
+plt.show()
 
 #Create input dataset from data
 inputs = data.drop(['Customer_Name', 'Customer_Email', 'Country', 'Purchase_Amount'], axis = 1)
@@ -66,14 +67,10 @@ plt.title('Model Loss Progression During Training/Validation')
 plt.ylabel('Training and Validation Losses')
 plt.xlabel('Epoch Number')
 plt.legend(['Training Loss', 'Validation Loss'])
-plt.show(block = True)
+plt.show()
 
-# Evaluate model
-# Gender, Age, Annual Salary, Credit Card Debt, Net Worth 
-# ***(Note that input data must be normalized)***
 
 input_test_sample = np.array([[0, 41.8,  62812.09, 11609.38, 238961.25]])
-#input_test_sample2 = np.array([[1, 46.73, 61370.67, 9391.34, 462946.49]])
 
 #Scale input test sample data
 input_test_sample_scaled = scaler_in.transform(input_test_sample)
