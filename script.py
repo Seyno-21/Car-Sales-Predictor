@@ -1,3 +1,4 @@
+import imp
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -11,6 +12,12 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense
 
+from ann_visualizer.visualize import ann_viz
+import graphviz
+import os
+
+os.environ["PATH"] += os.pathsep + "C:/Users/theot/Documents/GitHub/Car-Sales-Predictor/Graphviz/bin"
+from graphviz import Digraph
 
 #Data Import
 data = pd.read_csv('car_sales_dataset.csv', encoding = 'ISO-8859-1')
@@ -84,3 +91,7 @@ print('Predicted Output (Scaled) =', output_predict_sample_scaled)
 #Unscale output
 output_predict_sample = scaler_out.inverse_transform(output_predict_sample_scaled)
 print('Predicted Output / Purchase Amount ', output_predict_sample)
+
+ann_viz(model, view=True, filename="network.gv", title="Artificial Neural Network")
+graph_file = graphviz.Source.from_file('network.gv')
+graph_file
